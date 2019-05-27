@@ -4,7 +4,7 @@
     "title": "homeassistant",
     "description": "Home Assistant",
     "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/ha.png",
-    "image": "jriguera/rpi-homeassistant",
+    "image": "jriguera/homeassistant:latest",
     "platform": "linux",
     "note": "Docker image created from https://github.com/jriguera/docker-rpi-homeassistant",
     "categories": ["ha", "zwave", "iot"],
@@ -15,7 +15,7 @@
       { "name": "name", "value": "homeassistant" }
     ],
     "ports": [  
-      "8123/tcp"
+      "8123:8123/tcp"
     ],
     "volumes": [
       {"container": "/config", "bind": "/data/ha/config"}
@@ -27,7 +27,7 @@
     "title": "mariadb",
     "description": "An Enhanced drop in replacement for Mysql",
     "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/mariadb.png",
-    "image": "jriguera/mariadb",
+    "image": "jriguera/mariadb:latest",
     "platform": "linux",
     "note": "Docker image created from https://github.com/jriguera/docker-rpi-mariadb",
     "categories": ["sql", "database", "mysql"],
@@ -38,7 +38,7 @@
       { "name": "name", "value": "mariadb" }
     ],
     "ports": [  
-      "3306/tcp"
+      "3306:3306/tcp"
     ],
     "volumes": [
       {"container": "/var/lib/mysql", "bind": "/data/mariadb/data"}
@@ -72,7 +72,7 @@
     "title": "mosquitto",
     "description": "Mosquitto is a message broker that implements the MQTT protocol",
     "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/mosquitto.png",
-    "image": "jriguera/mosquitto",
+    "image": "jriguera/mosquitto:latest",
     "platform": "linux",
     "note": "Docker image created from https://github.com/jriguera/docker-rpi-mosquitto",
     "categories": ["mqtt", "mosquitto"],
@@ -83,7 +83,7 @@
       { "name": "name", "value": "mosquitto" }
     ],
     "ports": [  
-      "1883/tcp"
+      "1883:1883/tcp"
     ],
     "volumes": [
       {"container": "/mqtt", "bind": "/data/mosquitto/data"}
@@ -112,7 +112,7 @@
     "title": "traefik",
     "description": "Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy",
     "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/traefik.png",
-    "image": "jriguera/traefik",
+    "image": "jriguera/traefik:latest",
     "platform": "linux",
     "note": "Docker image created from https://github.com/jriguera/docker-rpi-traefik",
     "categories": ["http", "router", "traefik"],
@@ -123,9 +123,9 @@
       { "name": "name", "value": "traefik" }
     ],
     "ports": [  
-      "80/tcp",
-      "443/tcp",
-      "8080/tcp"
+      "80:80/tcp",
+      "443:443/tcp",
+      "8080:8080/tcp"
     ],
     "volumes": [
       {"container": "/var/run/docker.sock", "bind": "/var/run/docker.sock"},
