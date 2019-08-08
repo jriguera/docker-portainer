@@ -1,6 +1,151 @@
 [
   {
     "type": 1,
+    "title": "nginx",
+    "description": "Open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server)",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/nginx.png",
+    "image": "arm32v6/nginx",
+    "platform": "linux",
+    "note": "Official docker library image for Nginx: https://hub.docker.com/r/arm32v6/nginx",
+    "categories": ["official", "nginx"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "web" },
+      { "name": "proto", "value": "http" },
+      { "name": "name", "value": "nginx" }
+    ],
+    "ports": [
+      "80/tcp",
+      "443/tcp"
+    ],
+    "volumes": [
+      {"container": "/usr/share/nginx/html", "bind": "/data/nginx"}
+    ],
+    "env": [
+      {
+        "name":"NGINX_HOST",
+        "label": "Nginx Hostname",
+        "description": "Nginx Hostname",
+        "set": ""
+      },
+      {
+        "name":"NGINX_PORT",
+        "label":"Port",
+        "description": "Port where nginx will be listeting",
+        "set": "80"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "openjdk",
+    "description": "OpenJDK (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition (Java SE). OpenJDK is the official reference implementation of Java SE since version 7.",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/openjdk.png",
+    "image": "arm32v6/openjdk",
+    "platform": "linux",
+    "note": " Docker Official Images for Java: https://hub.docker.com/r/arm32v6/openjdk",
+    "categories": ["official", "openjdk"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "cli" },
+      { "name": "name", "value": "java" }
+    ],
+    "ports": [],
+    "volumes": [],
+    "env": []
+  },
+  {
+    "type": 1,
+    "title": "golang",
+    "description": "Go (a.k.a., Golang) is a programming language first developed at Google",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/golang.png",
+    "image": "arm32v6/golang",
+    "platform": "linux",
+    "note": " Docker Official Images for Golang: https://hub.docker.com/r/arm32v6/golang",
+    "categories": ["official", "golang"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "cli" },
+      { "name": "name", "value": "golang" }
+    ],
+    "ports": [],
+    "volumes": [],
+    "env": []
+  },
+  {
+    "type": 1,
+    "title": "python",
+    "description": "Python is an interpreted, interactive, object-oriented, open-source programming language",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/python.png",
+    "image": "arm32v6/python",
+    "platform": "linux",
+    "note": " Docker Official Images for Python: https://hub.docker.com/r/arm32v6/python",
+    "categories": ["official", "python"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "cli" },
+      { "name": "name", "value": "python" }
+    ],
+    "ports": [],
+    "volumes": [],
+    "env": []
+  },
+  {
+    "type": 1,
+    "title": "debian",
+    "description": "Linux/GNU Debian stable",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/debian.png",
+    "image": "debian:stable-slim",
+    "platform": "linux",
+    "note": " Docker Official Images: https://hub.docker.com/_/debian",
+    "categories": ["official", "debian"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "cli" },
+      { "name": "name", "value": "debian" }
+    ],
+    "ports": [],
+    "volumes": [],
+    "env": []
+  },
+  {
+    "type": 1,
+    "title": "alpine",
+    "description": "A minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size! Alpine Linux is a Linux distribution built around musl libc and BusyBox.",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/alpine.png",
+    "image": "arm32v6/alpine",
+    "platform": "linux",
+    "note": " Docker Official Images for Linux Alpine: https://hub.docker.com/r/arm32v6/bash",
+    "categories": ["official", "apline"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "cli" },
+      { "name": "name", "value": "alpine" }
+    ],
+    "ports": [],
+    "volumes": [],
+    "env": []
+  },
+  {
+    "type": 1,
+    "title": "bash",
+    "description": "Bash is the GNU Project's Bourne Again SHell",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/bash.png",
+    "image": "arm32v6/bash",
+    "platform": "linux",
+    "note": " Docker Official Images for Bash https://hub.docker.com/r/arm32v6/bash",
+    "categories": ["official", "bash"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "cli" },
+      { "name": "name", "value": "bash" }
+    ],
+    "ports": [],
+    "volumes": [],
+    "env": []
+  },
+  {
+    "type": 1,
     "title": "homeassistant",
     "description": "Home Assistant",
     "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/ha.png",
@@ -14,7 +159,7 @@
       { "name": "proto", "value": "http" },
       { "name": "name", "value": "homeassistant" }
     ],
-    "ports": [  
+    "ports": [
       "8123/tcp"
     ],
     "volumes": [
@@ -37,7 +182,7 @@
       { "name": "proto", "value": "sql" },
       { "name": "name", "value": "mariadb" }
     ],
-    "ports": [  
+    "ports": [
       "3306/tcp"
     ],
     "volumes": [
@@ -82,7 +227,7 @@
       { "name": "proto", "value": "mqtt" },
       { "name": "name", "value": "mosquitto" }
     ],
-    "ports": [  
+    "ports": [
       "1883/tcp"
     ],
     "volumes": [
@@ -122,7 +267,7 @@
       { "name": "proto", "value": "http" },
       { "name": "name", "value": "traefik" }
     ],
-    "ports": [  
+    "ports": [
       "80/tcp",
       "443/tcp",
       "8080/tcp"
