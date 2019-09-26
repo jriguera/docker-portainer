@@ -214,6 +214,47 @@
   },
   {
     "type": 1,
+    "title": "tasmoadmin",
+    "description": "TasmoAdmin is a web application to manage Sonoff Devices flashed with Tasmota",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/tasmoadmin.png",
+    "image": "jriguera/tasmoadmin:latest",
+    "platform": "linux",
+    "note": "Docker image created from https://github.com/jriguera/docker-rpi-tasmoadmin",
+    "categories": ["web", "sonoff", "iot"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "web" },
+      { "name": "proto", "value": "http" },
+      { "name": "name", "value": "tasmoadmin" }
+    ],
+    "ports": [
+      "1080:80/tcp"
+    ],
+    "volumes": [
+      {"container": "/data", "bind": "/data/tasmoadmin/data"}
+    ],
+    "env": [
+      {
+        "name":"TASMOADMIN_USER",
+        "label": "Admin Username",
+        "description": "Admin username to perform login",
+        "set": "admin"
+      },
+      {
+        "name":"TASMOADMIN_PASS",
+        "label":"Password",
+        "description": "Admin password"
+      },
+      {
+        "name":"TASMOADMIN_LOGIN",
+        "label":"Login enabled",
+        "description": "Enable or disable login",
+        "set": "1"
+      }
+    ]
+  },
+  {
+    "type": 1,
     "title": "mosquitto",
     "description": "Mosquitto is a message broker that implements the MQTT protocol",
     "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/mosquitto.png",
