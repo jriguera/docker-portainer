@@ -295,6 +295,83 @@
   },
   {
     "type": 1,
+    "title": "strongswan",
+    "description": "OpenSource IPsec-based VPN Solution",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/strongswan.png",
+    "image": "jriguera/strongswan:latest",
+    "platform": "linux",
+    "note": "Docker image created from https://github.com/jriguera/docker-rpi-strongswan",
+    "categories": ["vpn", "ipsec", "strongswan"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "vpn" },
+      { "name": "proto", "value": "ipsec" },
+      { "name": "name", "value": "strongswan" }
+    ],
+    "ports": [
+      "500:500/udp",
+      "4500:4500/udp"
+    ],
+    "volumes": [
+      {"container": "/data", "bind": "/data/strongswan"}
+    ],
+    "env": [
+      {
+        "name":"SERVER_NAME",
+        "label": "Server Name",
+        "description": "Server IP or DNS of the endpoint for the clients"
+      },
+      {
+        "name":"BASE_DN",
+        "label":"Base DN",
+        "description": "All certs needed will be generated with this base DN",
+        "set": "C=Earth, O=VPN"
+      },
+      {
+        "name":"CONNECTION_POOL_ADDRS",
+        "label":"Connection Pool",
+        "description": "Network pool assigned to clients",
+        "set": "10.100.100.0/24"
+      },
+      {
+        "name":"CONNECTION_POOL_DNS",
+        "label":"Connection DNS",
+        "description": "DNS assigned to clients",
+        "set": "10.100.100.1,1.1.1.1"
+      },
+      {
+        "name":"CONNECTION_DEVICE",
+        "label":"Connection Interface",
+        "description": "Network device ready to accept connections",
+        "set": "eth0"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "dozzle",
+    "description": "Realtime log viewer for docker containers",
+    "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/dozzle.png",
+    "image": "jriguera/dozzle:latest",
+    "platform": "linux",
+    "note": " Docker image created from https://github.com/jriguera/docker-rpi-dozzle",
+    "categories": ["http", "log", "dozzle"],
+    "restart_policy": "unless-stopped",
+    "labels": [
+      { "name": "type", "value": "router" },
+      { "name": "proto", "value": "http" },
+      { "name": "name", "value": "dozzle" }
+    ],
+    "ports": [
+      "8080:8080/tcp"
+    ],
+    "volumes": [
+      {"container": "/var/run/docker.sock", "bind": "/var/run/docker.sock"}
+    ],
+    "env": []
+  },
+  {
+    "type": 1,
     "title": "traefik",
     "description": "Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy",
     "logo": "https://raw.githubusercontent.com/jriguera/docker-portainer/master/rpi/images/traefik.png",
